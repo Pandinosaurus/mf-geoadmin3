@@ -25,6 +25,7 @@
     ]
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "angular": "1.7.8",
     "angular-translate": "2.18.1",
     "corejs-typeahead": "v1.2.1",
@@ -33,7 +34,9 @@
     "gyronorm": "2.0.6",
     "jquery-ajax-transport-xdomainrequest": "1.0.4",
     "localforage": "1.7.3",
-    "slipjs": "2.1.1"
+    "ngVue": "^1.7.6",
+    "slipjs": "2.1.1",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "angular-mocks": "1.7.8",
@@ -61,8 +64,10 @@
     "less-plugin-clean-css": "~1.5.1",
     "mocha": "6.1.4",
     "ng-annotate": "1.2.2",
-    "postcss-cli": "6.1.2",
     "phantomjs-prebuilt": "2.1.16",
-    "sinon": "7.3.2"
+    "postcss-cli": "6.1.2",
+    "sinon": "7.3.2",
+    "webpack": "^4.32.2",
+    "webpack-dev-server": "^3.4.1"
   }
 }
