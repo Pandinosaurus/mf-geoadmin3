@@ -4,11 +4,11 @@ goog.require('ga_urlutils_service');
 
 (function() {
 
-  angular.module('ga_printstyle_service', [
+  var module = angular.module('ga_printstyle_service', [
     'ga_urlutils_service'
-  ]).provider('gaPrintStyle', gaPrintStyle);
+  ]);
 
-  function gaPrintStyle() {
+  module.provider('gaPrintStyle', gaPrintStyle() {
     this.$get = function(gaUrlUtils) {
       return {
         olStyleToPrintLiteral: getolStyleToPrintLiteral(gaUrlUtils),
@@ -16,7 +16,7 @@ goog.require('ga_urlutils_service');
         olCircleToPolygon: olCircleToPolygon
       };
     };
-  };
+  });
 
   // Change a distance according to the change of DPI
   function adjustDist(dist, dpi) {

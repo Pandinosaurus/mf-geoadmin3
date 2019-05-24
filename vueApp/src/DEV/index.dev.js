@@ -1,11 +1,11 @@
 import Vue from 'vue'
 // import Vuex from 'vuex'
 
-import App from './vue/App.vue'
+import App from '@/vue/App.vue'
 // import store from './store'
 
 // load plugins
-Vue.use(Vuex)
+// Vue.use(Vuex)
 
 Vue.config.productionTip = false
 

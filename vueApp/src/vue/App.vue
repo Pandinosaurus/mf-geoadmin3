@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Greeter from './components/Greeter.vue'
+import Greeter from '@/vue/components/Greeter/index.vue'
 
 
 export default {

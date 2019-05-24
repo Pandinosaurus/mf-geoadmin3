@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+// const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// const TerserPlugin = require('terser-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const env = process.env.NODE_ENV;
 
@@ -28,7 +28,7 @@ const settings = {
         //     css: '../'
         // }
     },
-    entryFile: buildAsALibrary ? 'index.js' : 'DEV/dev.index.js'
+    entryFile: buildAsALibrary ? 'index.js' : 'DEV/index.dev.js'
 };
 
 // WEBPACK CONFIG
@@ -36,7 +36,14 @@ const config = {
     mode: mode,
     entry: {
         appVueLib: path.join(__dirname, settings.paths.source, settings.entryFile)
-    }
+    },
+    resolve: {
+        extensions: ['*', '.js', '.vue', '.json'],
+        alias: {
+            '@': path.join(__dirname, settings.paths.source),
+            'vue$': 'vue/dist/vue.esm.js'
+        },
+    },
     output: {
         path: path.join(__dirname, settings.paths.build),
         // publicPath: settings.paths.public,
@@ -59,6 +66,38 @@ const config = {
             }
         }
     },
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            // {
+            //     test: /\.(html|jsp)$/,
+            //     use: [
+            //         {
+            //             loader: "html-loader",
+            //             options: { minimize: true }
+            //         }
+            //     ]
+            // },
+            {
+                test: /\.js$/,
+                include: [path.join(__dirname, settings.paths.source)],
+                use: {
+                    loader: 'babel-loader'
+                }
+            },
+        ]
+    },
+    plugins: [
+        // new webpack.HashedModuleIdsPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new VueLoaderPlugin()
+    ],
+    devServer: {
+      host: 'localhost',
+    }
 }
 // const config = {
 //     mode: mode,
@@ -173,43 +212,39 @@ const config = {
 // };
 
 // extract CSS
-if (env === 'production') {
-    config.plugins.push(new MiniCssExtractPlugin({
-        filename: path.join(settings.paths.css, '[name].css'),
-        chunkFilename: path.join(settings.paths.css, '[name].css'),
-        sourceMap: sourceMap
-    }));
-    // Replace the `vue-style-loader` with the MiniCssExtractPlugin loader.
-    const sassLoader = config.module.rules.find(({ test }) => new RegExp(test).test('.scss'));
-    sassLoader.use[0] = MiniCssExtractPlugin.loader;
-}
+// if (env === 'production') {
+//     config.plugins.push(new MiniCssExtractPlugin({
+//         filename: path.join(settings.paths.css, '[name].css'),
+//         chunkFilename: path.join(settings.paths.css, '[name].css'),
+//         sourceMap: sourceMap
+//     }));
+//     // Replace the `vue-style-loader` with the MiniCssExtractPlugin loader.
+//     const sassLoader = config.module.rules.find(({ test }) => new RegExp(test).test('.scss'));
+//     sassLoader.use[0] = MiniCssExtractPlugin.loader;
+// }
 
 // clean dist folder
 if (env === 'production') {
-    config.plugins.push(new CleanWebpackPlugin([settings.paths.build], {
-        root: __dirname,
-        verbose: true,
-        dry: false
-    }));
+    config.plugins.push(new CleanWebpackPlugin());
 }
 
 // optimize CSS
-if (minify === true) {
-    config.optimization.minimizer = [
-        new TerserPlugin({
-            cache: true,
-            parallel: true,
-            sourceMap: sourceMap
-        }),
-        new OptimizeCSSAssetsPlugin({
-            cssProcessorOptions: {
-                map: sourceMap ? { inline: false, annotation: true } : false,
-                safe: true,
-                discardComments: { removeAll: true }
-            }
-        })
-    ];
-}
+// if (minify === true) {
+//     config.optimization.minimizer = [
+//         new TerserPlugin({
+//             cache: true,
+//             parallel: true,
+//             sourceMap: sourceMap
+//         }),
+//         new OptimizeCSSAssetsPlugin({
+//             cssProcessorOptions: {
+//                 map: sourceMap ? { inline: false, annotation: true } : false,
+//                 safe: true,
+//                 discardComments: { removeAll: true }
+//             }
+//         })
+//     ];
+// }
 
 // do you wanna inject the app into an index.html file?
 if (buildAsALibrary === false) {
@@ -231,10 +266,10 @@ if (buildAsALibrary === false) {
     https://stackoverflow.com/questions/52858367/gradually-move-from-including-each-js-files-to-module-bundling
     https://webpack.js.org/configuration/externals/
 */
-// if (env === 'production') {
-//     config.externals = {
-//         angular: 'angular'
-//     };
-// }
+if (env === 'production') {
+    config.externals = {
+        angular: 'angular'
+    };
+}
 
 module.exports = config;

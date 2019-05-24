@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { Greeter } from './js/poc.js'
+import { Greeter } from '@/js/poc.js'
 
 export default {
     name: "Greeter",
@@ -15,10 +15,10 @@ export default {
             prefix: "Greet the",
             greeter: new Greeter(this.name)
         }
-    }
+    },
     methods: {
         greet: function() {
-            this.greeter.greet()
+            console.log(this.greeter.greet())
         }
     }
 

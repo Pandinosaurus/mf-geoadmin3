@@ -1,4 +1,4 @@
-export default class Greeter {
+export class Greeter {
 
     constructor(name) {
         this.name = name;
