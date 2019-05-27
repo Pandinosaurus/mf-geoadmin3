@@ -18,6 +18,7 @@ goog.require('ga_urlutils_service');
   module.provider('gaMapUtils', function() {
     this.$get = function($window, gaGlobalOptions, gaUrlUtils, $q,
         gaDefinePropertiesForLayer, $rootScope, gaHeight) {
+      console.log("got here");
       var resolutions = gaGlobalOptions.resolutions;
       var lodsForRes = gaGlobalOptions.lods;
       var isExtentEmpty = function(extent) {

@@ -64,6 +64,7 @@ goog.require('ga_translation');
 goog.require('ga_translation_controller');
 goog.require('ga_vector_tile');
 goog.require('ga_waitcursor_service');
+goog.require('ngVueComponents');
 (function() {
 
   var module = angular.module('geoadmin', [
@@ -130,7 +131,8 @@ goog.require('ga_waitcursor_service');
     'ga_draw_controller',
     'ga_drawstyle_controller',
     'ga_drawstylepopup_controller',
-    'ga_vector_tile'
+    'ga_vector_tile',
+    'ngVueComponents'
   ]);
 
   module.config(function($translateProvider, gaGlobalOptions) {

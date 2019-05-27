@@ -8,7 +8,7 @@ goog.require('ga_urlutils_service');
     'ga_urlutils_service'
   ]);
 
-  module.provider('gaPrintStyle', gaPrintStyle() {
+  module.provider('gaPrintStyle', function() {
     this.$get = function(gaUrlUtils) {
       return {
         olStyleToPrintLiteral: getolStyleToPrintLiteral(gaUrlUtils),
