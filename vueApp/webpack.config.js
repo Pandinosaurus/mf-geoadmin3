@@ -50,23 +50,23 @@ const config = {
         // publicPath: settings.paths.public,
         filename: path.join(settings.paths.js, '[name].js')
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            maxInitialRequests: Infinity,
-            minSize: 0,
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'appVueLib_VendorsDependencies'
-                },
-                ngVueBridge: {
-                    test: /[\\/]src\/ngVueBridgeCode[\\/]/,
-                    name: 'appVueLib_NgVueBridge'
-                },
-            }
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all',
+    //         maxInitialRequests: Infinity,
+    //         minSize: 0,
+    //         cacheGroups: {
+    //             vendor: {
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 name: 'appVueLib_VendorsDependencies'
+    //             },
+    //             ngVueBridge: {
+    //                 test: /[\\/]src\/ngVueBridgeCode[\\/]/,
+    //                 name: 'appVueLib_NgVueBridge'
+    //             },
+    //         }
+    //     }
+    // },
     module: {
         rules: [
             {
