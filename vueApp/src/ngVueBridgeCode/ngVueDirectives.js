@@ -4,5 +4,5 @@ import Greeter from '@/vue/components/Greeter/index.vue';
 
 ngVueComponentsModule.directive('greeter',
     /** @ngInject */
-    createVueComponent => createVueComponent(Vue.component('Greeter', Greeter))
+    createVueComponent => createVueComponent(Vue.component('greeter', Greeter))
 );
