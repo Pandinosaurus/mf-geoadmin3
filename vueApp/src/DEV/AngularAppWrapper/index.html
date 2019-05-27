@@ -1,0 +1,9 @@
+<div class="angular-app-container">
+    {{$ctrl.internalString}}
+    <!-- Note: make sure to use single quotes for strings
+        inside double quotes, otherwise it's interpreted as
+        an object
+    -->
+    <greeter name="'World'"></greeter>
+    <greeter name="$ctrl.internalString"></greeter>
+</div>

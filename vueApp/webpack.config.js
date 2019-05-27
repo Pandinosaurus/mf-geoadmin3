@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const TerserPlugin = require('terser-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const env = process.env.NODE_ENV;
+const wrapper = process.env.WRAPPER || 'vue';
 
 
 // APP CONFIG
@@ -28,7 +29,7 @@ const settings = {
         //     css: '../'
         // }
     },
-    entryFile: buildAsALibrary ? 'index.js' : 'DEV/index.dev.js'
+    entryFile: buildAsALibrary ? 'index.js' : 'DEV/index.' + wrapper + '.js'
 };
 
 // WEBPACK CONFIG
@@ -72,15 +73,15 @@ const config = {
                 test: /\.vue$/,
                 loader: 'vue-loader'
             },
-            // {
-            //     test: /\.(html|jsp)$/,
-            //     use: [
-            //         {
-            //             loader: "html-loader",
-            //             options: { minimize: true }
-            //         }
-            //     ]
-            // },
+            {
+                test: /\.(html|jsp)$/,
+                use: [
+                    {
+                        loader: "html-loader",
+                        // options: { minimize: true }
+                    }
+                ]
+            },
             {
                 test: /\.js$/,
                 include: [path.join(__dirname, settings.paths.source)],
