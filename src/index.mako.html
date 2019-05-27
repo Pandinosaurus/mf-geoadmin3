@@ -678,7 +678,14 @@ itemscope itemtype="http://schema.org/WebApplication"
     <script src="${s3basepath}lib/appVueLib.js"></script>
 
     <script>
-      goog.require('geoadmin');
+      // goog.require('geoadmin');
+      /// <summary>
+      /// Bootstrap the ng-app on DOM loaded.
+      /// </summary>
+      $().ready(function () {
+          angular.bootstrap('body', ['geoadmin']);
+      });
+
     </script>
 % endif
 

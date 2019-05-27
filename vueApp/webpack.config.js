@@ -12,7 +12,8 @@ const wrapper = process.env.WRAPPER || 'vue';
 
 // APP CONFIG
 const mode = env; // ('production': UGLIFY; 'development': NOT UGLIFY)
-const minify = (env === 'production');
+// const minify = (env === 'production');
+const minify = false;
 const sourceMap = (env === 'development');
 const buildAsALibrary = (env === 'production');
 
@@ -50,23 +51,23 @@ const config = {
         // publicPath: settings.paths.public,
         filename: path.join(settings.paths.js, '[name].js')
     },
-    // optimization: {
-    //     splitChunks: {
-    //         chunks: 'all',
-    //         maxInitialRequests: Infinity,
-    //         minSize: 0,
-    //         cacheGroups: {
-    //             vendor: {
-    //                 test: /[\\/]node_modules[\\/]/,
-    //                 name: 'appVueLib_VendorsDependencies'
-    //             },
-    //             ngVueBridge: {
-    //                 test: /[\\/]src\/ngVueBridgeCode[\\/]/,
-    //                 name: 'appVueLib_NgVueBridge'
-    //             },
-    //         }
-    //     }
-    // },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            maxInitialRequests: Infinity,
+            minSize: 0,
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'appVueLib_VendorsDependencies'
+                },
+                ngVueBridge: {
+                    test: /[\\/]src\/ngVueBridgeCode[\\/]/,
+                    name: 'appVueLib_NgVueBridge'
+                },
+            }
+        }
+    },
     module: {
         rules: [
             {
@@ -253,12 +254,12 @@ if (buildAsALibrary === false) {
         template: path.join(__dirname, settings.paths.source, 'index.html'),
         filename: path.join(__dirname, settings.paths.build, 'index.html'),
         inject: true,
-        minify: minify ? {
-            // Options: https://github.com/kangax/html-minifier#options-quick-reference
-            removeComments: true,
-            collapseWhitespace: true,
-            removeAttributeQuotes: true
-        } : false
+        // minify: minify ? {
+        //     // Options: https://github.com/kangax/html-minifier#options-quick-reference
+        //     removeComments: true,
+        //     collapseWhitespace: true,
+        //     removeAttributeQuotes: true
+        // } : false
     }));
 }
 
