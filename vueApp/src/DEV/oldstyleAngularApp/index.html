@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>vue-app-in-angular-app-integration</title>
+</head>
+
+<body>
+  <div ng-app="AngularApp">
+  <!-- <div> -->
+    <div ng-controller="HelloWorldCtrl"> 
+      <h1 >Hello {{message}}</h1>
+
+      <greeter name="'Fritz'"></greeter>
+    </div>
+  </div>
+
+  <script src="lib/angular.js"></script>
+
+  
+
+
+  <!-- Use Closure to load the application scripts -->
+  <script>
+      window.CLOSURE_NO_DEPS = true;
+  </script>
+
+  <!-- <script src="src/angularApp.js"></script> -->
+  <!-- <script src="src/helloWorldController.js"></script> -->
+  <script src="deps.js"></script>
+
+
+  <script src="../../../dist/js/appVueLib_VendorsDependencies.js"></script>
+  <script src="../../../dist/js/appVueLib_NgVueBridge.js"></script>
+  <script src="../../../dist/js/appVueLib.js"></script>    
+
+  <script type="text/javascript">
+    goog.require('AngularApp');
+  </script>
+
+</body>
+
+</html>

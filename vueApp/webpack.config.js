@@ -66,7 +66,8 @@ const config = {
                     name: 'appVueLib_NgVueBridge'
                 },
             }
-        }
+        },
+        minimize: false
     },
     module: {
         rules: [

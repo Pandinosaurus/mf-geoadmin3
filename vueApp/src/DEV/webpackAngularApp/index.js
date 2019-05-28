@@ -1,4 +1,4 @@
-import template from '@/DEV/AngularAppWrapper/index.html';
+import template from '@/DEV/webpackAngularApp/index.html';
 
 export default {
     template: template,

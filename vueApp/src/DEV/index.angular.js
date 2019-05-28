@@ -3,7 +3,7 @@ import '@babel/polyfill';
 // import '@/assets/styles/index.scss';
 import angular from 'angular';
 // import the wrapper component created above
-import AngularAppWrapper from '@/DEV/AngularAppWrapper/index.js';
+import AngularAppWrapper from '@/DEV/webpackAngularApp/index.js';
 import '@/ngVueBridgeCode/ngVueDirectives.js';
 import ngVueComponentsModule from '@/ngVueBridgeCode/ngVueComponentsModule.js';
 
