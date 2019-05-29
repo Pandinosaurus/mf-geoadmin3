@@ -1,11 +1,11 @@
 goog.provide('ga_profilebt_directive');
 
-goog.require('ga_geomutils_service');
+goog.require('ngVueComponents');
 
 (function() {
 
   var module = angular.module('ga_profilebt_directive', [
-    'ga_geomutils_service'
+    'ngVueComponents'
   ]);
 
   module.directive('gaProfileBt', function($rootScope, gaGeomUtils) {

@@ -65,6 +65,7 @@ export class GeometryUtils {
     return false;
   }
 
+  // TODO: remove!
   demo(name) {
     return name + 'works!'
   }

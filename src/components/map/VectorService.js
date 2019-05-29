@@ -1,7 +1,7 @@
 goog.provide('ga_vector_service');
 
 goog.require('ga_definepropertiesforlayer_service');
-goog.require('ga_geomutils_service');
+goog.require('ngVueComponents');
 goog.require('ga_gpx_service');
 goog.require('ga_kml_service');
 goog.require('ga_maputils_service');
@@ -22,7 +22,7 @@ goog.require('ga_file_service');
     'ga_storage_service',
     'ga_urlutils_service',
     'ga_measure_service',
-    'ga_geomutils_service',
+    'ngVueComponents',
     'ga_file_service'
   ]);
 

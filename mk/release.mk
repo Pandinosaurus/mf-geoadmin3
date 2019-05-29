@@ -55,6 +55,8 @@ prd/lib/build.js: src/lib/polyfill.min.js \
                   src/lib/localforage.min.js \
                   src/lib/filesaver.min.js \
                   src/lib/gyronorm.complete.min.js \
+                  src/lib/appVueLib.js \
+                  src/lib/appVueLib_VendorsDependencies.js \
                   .build-artefacts/app.js
 	mkdir -p $(dir $@)
 	cat $^ | sed 's/^\/\/[#,@] sourceMappingURL=.*\.map//' > $@

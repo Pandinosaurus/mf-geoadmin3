@@ -1,13 +1,13 @@
 goog.provide('ga_measure_service');
 
-goog.require('ga_geomutils_service');
+goog.require('ngVueComponents');
 goog.require('ga_measure_filter');
 
 (function() {
 
   var module = angular.module('ga_measure_service', [
     'ga_measure_filter',
-    'ga_geomutils_service'
+    'ngVueComponents'
   ]);
 
   module.provider('gaMeasure', function() {
