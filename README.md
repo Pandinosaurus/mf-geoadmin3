@@ -1,4 +1,4 @@
-mf-geoadmin3
+mf-geoadmin3 (LEGACY / NOT MAINTAINED ANYMORE)
 ============
 
 [![Build Status](https://jenkins.bgdi.ch/buildStatus/icon?job=chtopo_igeb_mf-geoadmin3/master)](https://jenkins.bgdi.ch/job/chtopo_igeb_mf-geoadmin3/job/master/)
